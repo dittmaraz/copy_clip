@@ -1,0 +1,11 @@
+.card{
+    width: 200px;
+    border:1px solid #000;
+
+}
+.card-body{
+    text-align: center;
+}
+.card-body-text{
+    color:red;
+}
