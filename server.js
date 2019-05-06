@@ -29,7 +29,11 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug')
 
 app.get('/', (req,res) => {
-    res.render('index', { title: 'Hey', message: 'Hello there!' })
+    ClipboardRecord.find()
+        .then((clipboardRecords) => {
+            res.render('index', { title: "clip_copy", clipboardRecords})
+        })
+        .catch(() => { res.send('sorry, something went wrong!')})
 })
 
 app.post('/api/set', (req,res) => {

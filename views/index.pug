@@ -1,17 +1,20 @@
 extends layout
 block content
-    .jumbotron
-        h1.display-4 copy_clip
-        a(href="http://github.com/dittmaraz") dittmaraz
-        hr.my-4
-        a(href="http://localhost:3000/api/set") 
-        br
-        br
-        .card
-          .card-header
-            clipboard example
-          .card-body
-            h5.card-title 
-            <i class="fas fa-7x fa-clipboard"></i>
-            p.card-text abc
-          
+    a(href="http://github.com/dittmaraz") dittmaraz
+    hr.my-4
+    a(href="http://localhost:3000/api/set") 
+    br
+    br
+    if clipboardRecords.length
+      table.listing-table.table-dark.table-striped
+        tr
+          th Content
+          th Date
+          th Device
+        each cliprec in clipboardRecords
+          tr
+            td= cliprec.content
+            td= cliprec.eventDate.toDateString()
+            td= cliprec.device
+    else
+      p No registrations yet :(
